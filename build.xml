@@ -1,0 +1,42 @@
+<project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+  <property environment="env"/>
+
+  <macrodef name="git">
+    <attribute name="command" />
+    <attribute name="dir" default="" />
+    <element name="args" optional="true" />
+    <sequential>
+      <echo message="git @{command}" />
+      <exec executable="git" dir="@{dir}">
+        <arg value="@{command}" />
+        <args/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <target name="frontend.compile">
+    <exec dir="${basedir}/frontend" executable="yarn" failonerror="true">
+    </exec>
+    <exec dir="${basedir}/frontend" executable="yarn" failonerror="true">
+      <arg value="build" />
+      <arg line="--mode development" />
+    </exec>
+    <copy
+      file="${basedir}/frontend/dist/main.js"
+      tofile="${basedir}/src/staticresources/main.resource"
+      failonerror="true"
+    />
+  </target>
+
+
+  <target name="deploy.dev" depends="frontend.compile">
+    <sf:deploy
+      username="[USERNAME]"
+      password="[PASSWORD][SECURITY TOKEN]"
+      serverurl="https://test.salesforce.com"
+      maxPoll="1000"
+      deployRoot="src"
+    />
+  </target>
+
+</project>

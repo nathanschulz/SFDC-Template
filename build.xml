@@ -29,7 +29,7 @@
   </target>
 
 
-  <target name="deploy.dev" depends="frontend.compile">
+  <target name="deploy.dev">
     <sf:deploy
       username="[USERNAME]"
       password="[PASSWORD][SECURITY TOKEN]"

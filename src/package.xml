@@ -154,19 +154,11 @@
     </types>
     <types>
         <members>*</members>
-        <name>ReportFolder</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>Report</name>
     </types>
     <types>
         <members>*</members>
         <name>ReportType</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>DocumentFolder</name>
     </types>
     <types>
         <members>*</members>
@@ -211,10 +203,6 @@
     <types>
         <members>*</members>
         <name>CustomPermission</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>EmailFolder</name>
     </types>
     <types>
         <members>*</members>
